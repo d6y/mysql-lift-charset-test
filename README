@@ -1,0 +1,28 @@
+So you think you have a character encoding problem, eh?
+
+This Lift app attempts to insert UTF-8 data into a table it creates and then show
+you what comes back.  
+
+By default the table is called foo, with a username and password of foo (see Boot.scala).
+We assume MySQL.
+
+When you run the app, visit http://127.0.0.1:8080 and see the data inserted and
+what is recovered when the table is queried.
+
+Instructions:
+
+1) Set up a MySQL database:
+
+$ mysql -u root -p --default-character-set=utf8
+MYSQL> CREATE DATABASE foo CHARACTER SET utf8 COLLATE utf8_bin;
+MYSQL> grant all privileges on foo.* to 'foo'@'localhost' identified by 'foo';
+MYSQL> flush privileges;
+
+2) Run the app:
+
+$ sbt jetty
+
+3) open http://127.0.0.1:8080/ and see the results.
+
+
+
